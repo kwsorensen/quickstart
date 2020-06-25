@@ -60,3 +60,12 @@ Admin password to use for Rancher server bootstrap
 
 See `rancher-common` module variable `admin_password` for more details.
 
+# Windows powershsell configure rke
+$ New-Item -Path $Env:APPDATA\terraform.d\plugins\windows_amd64 -ItemType Directory -Force
+$ Invoke-WebRequest -Uri https://github.com/rancher/terraform-provider-rke/releases/download/1.0.0/terraform-provider-rke-windows-amd64.zip -OutFile terraform-provider-rke-windows-amd64.zip -UseBasicParsing
+$ Expand-Archive terraform-provider-rke-windows-amd64.zip
+$ Move-Item -Path terraform-provider-rke-windows-amd64\terraform-provider-rke-9c95410\terraform-provider-rke.exe -Destination $Env:APPDATA\terraform.d\plugins\windows_amd64\terraform-provider-rke_v1.0.0.exe
+$ Remove-Item -Path terraform-provider-rke-windows-amd64* -Recurse
+#
+#
+#

@@ -54,6 +54,10 @@ resource "aws_instance" "rancher_server" {
   key_name        = aws_key_pair.quickstart_key_pair.key_name
   security_groups = [aws_security_group.rancher_sg_allowall.name]
 
+  root_block_device {
+    volume_size = 20
+  }
+
   user_data = templatefile(
     join("/", [path.module, "../cloud-common/files/userdata_rancher_server.template"]),
     {
@@ -110,6 +114,10 @@ resource "aws_instance" "quickstart_node" {
 
   key_name        = aws_key_pair.quickstart_key_pair.key_name
   security_groups = [aws_security_group.rancher_sg_allowall.name]
+
+  root_block_device {
+    volume_size = 20
+  }
 
   user_data = templatefile(
     join("/", [path.module, "files/userdata_quickstart_node.template"]),
