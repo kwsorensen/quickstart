@@ -1,5 +1,14 @@
 # AWS infrastructure resources
 
+# Route 53 entry
+resource "aws_route53_record" "www" {
+  zone_id =  "ZE25ZVVC4ZJHU"
+  name    = "*.${var.prefix}.terraform.pwtestops.com"
+  type    = "A"
+  ttl     = "300"
+  records = ["${aws_instance.quickstart_node.public_ip}"]
+}
+
 resource "tls_private_key" "global_key" {
   algorithm = "RSA"
   rsa_bits  = 2048
