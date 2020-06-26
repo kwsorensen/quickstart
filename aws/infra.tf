@@ -1,7 +1,7 @@
 # AWS infrastructure resources
 
 # Route 53 entry
-resource "aws_route53_record" "www" {
+resource "aws_route53_record" "worker_cluster" {
   zone_id =  "ZE25ZVVC4ZJHU"
   name    = "*.${var.prefix}.terraform.pwtestops.com"
   type    = "A"

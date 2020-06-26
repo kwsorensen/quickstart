@@ -11,5 +11,9 @@ output "workload_node_ip" {
 }
 
 output "dns_name" {
-  value = aws_route53_record.www.name
+  value = aws_route53_record.worker_cluster.name
+}
+
+output "dns_name_base" {
+  value = "${var.prefix}.terraform.pwtestops.com"
 }
